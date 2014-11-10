@@ -1,3 +1,11 @@
-h1 {
-  color: red;
+.core-header, .content {
+  padding: 0 10px;
+}
+
+.core-header {
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  background-color: #4F7DC9;
+  color: #FFF;
 }

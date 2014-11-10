@@ -1,17 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../login-screen/login-screen.html">
 
 <polymer-element name="timetracking-app" attributes="">
   <template>
     <link rel="stylesheet" href="timetracking-app.css">
 
-    <core-animated-pages selected="{{selected}}">
+    <core-animated-pages selected="{{selected}}" fit>
       <login-screen center fit layout vertical user="{{user}}"></login-screen>
 
-      <section id="main">
-        <h1>Demo page</h1>
-      </section>
+      <core-header-panel>
+        <div class="core-header">Hello {{ user.username }}</div>
+        <div class="content">
+          <h1>Demo page</h1>
+        </div>
+      </core-header-panel>
     </core-animated-pages>
   </template>
   <script>
