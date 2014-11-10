@@ -13,6 +13,14 @@
 
       Polymer({
         ready: function() {
+        },
+        observe: {
+          'user': 'login'
+        },
+        login: function login() {
+          // TODO
+
+          console.log('user is logged');
         }
       });
 
