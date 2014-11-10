@@ -2,18 +2,18 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 
-<polymer-element name="login-screen" attributes="">
+<polymer-element name="login-screen" attributes="user">
   <template>
     <link rel="stylesheet" href="login-screen.css">
 
     <div class="container">
       <h1>Login</h1>
 
-      <paper-input label="Username"></paper-input>
-      <paper-input label="Password" type="password"></paper-input>
+      <paper-input id="username" label="Username"></paper-input>
+      <paper-input id="password" label="Password" type="password"></paper-input>
 
       <div layout end vertical>
-        <paper-fab mini icon="check"></paper-fab>
+        <paper-fab mini icon="check" on-tap="{{login}}"></paper-fab>
       </div>
     </div>
   </template>
@@ -23,6 +23,12 @@
 
       Polymer({
         ready: function() {
+        },
+        login: function () {
+          this.user = {
+            username: this.$.username.value,
+            password: this.$.password.value
+          };
         }
       });
 
