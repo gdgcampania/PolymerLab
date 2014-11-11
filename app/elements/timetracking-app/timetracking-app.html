@@ -17,7 +17,9 @@
       <core-header-panel>
         <div class="core-header">Hello {{ user.username }}</div>
         <div class="content">
-          <h1>Demo page</h1>
+          <template repeat="{{project in projects}}">
+            <h1>{{ project.name }}</h1>
+          </template>
         </div>
         <paper-fab id="add-project" icon="add" on-tap="{{showAddProjectDialog}}"></paper-fab>
       </core-header-panel>
@@ -31,6 +33,7 @@
 
       Polymer({
         ready: function() {
+          this.projects = [];
         },
         observe: {
           'user': 'login'
@@ -42,7 +45,9 @@
           this.$['add-project'].toggle();
         },
         projectAdded: function(e) {
-          alert('Added ' + e.detail.name);
+          this.projects.push({
+            name: e.detail.name
+          });
         }
       });
 

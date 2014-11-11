@@ -22,6 +22,8 @@
           var name = this.$.name.value;
 
           this.fire('project-added', {name: name});
+
+          this.$.name.value = '';
         },
         toggle: function () {
           this.$.dialog.toggle();
