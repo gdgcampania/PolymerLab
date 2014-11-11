@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../login-screen/login-screen.html">
+<link rel="import" href="../add-project-dialog/add-project-dialog.html">
 
 <polymer-element name="timetracking-app" attributes="">
   <template>
@@ -22,12 +23,7 @@
       </core-header-panel>
     </core-animated-pages>
 
-    <paper-dialog heading="Add project" id="add-project-dialog" transition="paper-dialog-transition-center">
-      <paper-input id="name" label="Project name"></paper-input>
-
-      <paper-button dismissive>Cancel</paper-button>
-      <paper-button affirmative autofocus>Add</paper-button>
-    </paper-dialog>
+    <add-project-dialog id="add-project" on-project-added="{{projectAdded}}" />
   </template>
   <script>
     (function () {
@@ -43,7 +39,10 @@
           this.selected = 1;
         },
         showAddProjectDialog: function() {
-          this.$['add-project-dialog'].toggle();
+          this.$['add-project'].toggle();
+        },
+        projectAdded: function(e) {
+          alert('Added ' + e.detail.name);
         }
       });
 

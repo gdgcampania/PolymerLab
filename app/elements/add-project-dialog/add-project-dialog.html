@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+
+<polymer-element name="add-project-dialog">
+  <template>
+    <paper-dialog id="dialog" transition="paper-dialog-transition-center">
+      <paper-input id="name" label="Project name"></paper-input>
+
+      <paper-button dismissive>Cancel</paper-button>
+      <paper-button affirmative on-tap="{{addProject}}">Add</paper-button>
+    </paper-dialog>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        addProject: function () {
+          var name = this.$.name.value;
+
+          this.fire('project-added', {name: name});
+        },
+        toggle: function () {
+          this.$.dialog.toggle();
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>
