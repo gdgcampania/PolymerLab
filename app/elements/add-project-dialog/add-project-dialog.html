@@ -6,7 +6,7 @@
 <polymer-element name="add-project-dialog">
   <template>
     <paper-dialog id="dialog" transition="paper-dialog-transition-center">
-      <paper-input id="name" label="Project name"></paper-input>
+      <paper-input id="name" autofocus label="Project name"></paper-input>
 
       <paper-button dismissive>Cancel</paper-button>
       <paper-button affirmative on-tap="{{addProject}}">Add</paper-button>

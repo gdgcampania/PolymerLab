@@ -6,6 +6,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../login-screen/login-screen.html">
 <link rel="import" href="../add-project-dialog/add-project-dialog.html">
+<link rel="import" href="../project-hours/project-hours.html">
 
 <polymer-element name="timetracking-app" attributes="">
   <template>
@@ -17,8 +18,20 @@
       <core-header-panel>
         <div class="core-header">Hello {{ user.username }}</div>
         <div class="content">
+          <template if="{{projects.length}}">
+            <div horizontal layout center>
+              <h1 flex two>Project name</h1>
+
+              <template repeat="{{i in hoursNumbers}}">
+                <div flex>
+                  {{i}}
+                </div>
+              </template>
+            </div>
+          </template>
+
           <template repeat="{{project in projects}}">
-            <h1>{{ project.name }}</h1>
+            <project-hours hours="{{hoursNumbers}}" project="{{project}}"></project-hours>
           </template>
         </div>
         <paper-fab id="add-project" icon="add" on-tap="{{showAddProjectDialog}}"></paper-fab>
@@ -32,8 +45,16 @@
       'use strict';
 
       Polymer({
+        hours: 8,
         ready: function() {
+          // TODO: can be stored in local storage using the localstorage component.
           this.projects = [];
+
+          this.hoursNumbers = [];
+
+          for (var i = 0; i < this.hours; i++) {
+            this.hoursNumbers.push(i + 1);
+          }
         },
         observe: {
           'user': 'login'

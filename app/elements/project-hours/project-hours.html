@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+<polymer-element name="project-hours" attributes="project hours">
+  <template>
+    <div horizontal layout center>
+      <h1 flex two>{{project.name}}</h1>
+
+      <template repeat="{{i in hours}}">
+        <div flex>
+          <paper-checkbox></paper-checkbox>
+        </div>
+      </template>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        hours: [1, 2, 3, 5, 6, 7, 8]
+      });
+
+    })();
+  </script>
+</polymer-element>
+
